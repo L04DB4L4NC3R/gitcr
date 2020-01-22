@@ -22,10 +22,10 @@ create(){
 	CREATION_STATUS=""
 
 	# Keeps array index in check
-	count=1
+	curr=1
 
 	# Keeps total count
-	cur=0
+	count=0
 
 	# Main JSON object array
 	result=("[")
@@ -59,26 +59,26 @@ create(){
 			let "failure_count++"
 		fi
 
-		# Store the JSON for the current iteration
-		result[$count]=`echo { \"repo_name\": \"$line\", \"status\": \"$CREATION_STATUS\", \"order_of_execution\": $cur, \"code\": $code, \"url\": \"$url\" } | jq`
+		# Store the JSON for the countrent iteration
+		result[$curr]=`echo { \"repo_name\": \"$line\", \"status\": \"$CREATION_STATUS\", \"order_of_execution\": $count, \"code\": $code, \"url\": \"$url\" } | jq`
 
 		# Increment count, add a comma in the end
 		# Then increment it again for capturing the next object
-		let "count++"
-		result[$count]=","
-		let "count++"
+		let "curr++"
+		result[$curr]=","
+		let "curr++"
 
 		# Increment total count
-		let "cur++"
+		let "count++"
 
 	done < ./repos.txt
 
 	# Add trailing ']' to complete JSON array
-	result[$count]="]"
+	result[$curr]="]"
 
 	# Remove the ',' from the last iteration 
-	let "count=count-1"
-	result[$count]=""
+	let "curr=curr-1"
+	result[$curr]=""
 
 	# Support "write to file" 
 	if [[ $2 == "--out=json"  ]]
@@ -89,8 +89,8 @@ create(){
 	fi
 
 	echo Success Count: $success_count
-	echo Failure COunt: $failure_count
-	echo Total Count: $cur
+	echo Failure Count: $failure_count
+	echo Total Count: $count
 
 }
 
