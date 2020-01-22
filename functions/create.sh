@@ -73,7 +73,7 @@ create(){
 	# Support "write to file" 
 	if [[ $2 == "--out=json"  ]]
 	then
-		echo ${result[@]} > created_out.json
+		echo ${result[@]} > ./output/created_out.json
 	else
 		echo ${result[@]}
 	fi

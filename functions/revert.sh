@@ -71,7 +71,7 @@ revert(){
 	# Support "write to file" 
 	if [[ $2 == "--out=json"  ]]
 	then
-		echo ${result[@]} > deleted_out.json
+		echo ${result[@]} > ./output/deleted_out.json
 	else
 		echo ${result[@]}
 	fi
