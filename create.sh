@@ -53,8 +53,17 @@ create(){
 	result[$count]="]"
 	let "count=count-1"
 	result[$count]=""
-	echo ${result[@]}
+
+	echo $2
+	if [[ $2 == "--out=json"  ]]
+	then
+		echo ${result[@]} > out.json
+	else
+		echo ${result[@]}
+	fi
+
+	echo Total count: $cur
 
 }
 
-create
+create $@
