@@ -15,7 +15,7 @@
 ## Instructions to run
 
 ### Pre-requisites
-* A linux based system with *curl* installed, or docker.
+* A linux based system with *curl* and *jq* installed, or docker
 * [Github personal access token](https://github.com/settings/tokens) with write and delete permissions. 
 * A [template repository](https://help.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-repository-from-a-template).
 
@@ -43,6 +43,22 @@ $ ./gitcr
 ```
 
 ### Execution
+To run the scripts on any platform, replace `{PATH}`  with the absolute file path of where your script exists, then run the command(s) below:
+```
+# For creation
+docker run --rm --mount type=bind,source="{PATH}",target=/usr/app/cli/ angadsharma1016/gitcr -c "bash /usr/app/cli/gitcr create"
+
+# For deletion/reverting creation
+docker run --rm --mount type=bind,source="{PATH}",target=/usr/app/cli/ angadsharma1016/gitcr -c "bash /usr/app/cli/gitcr revert"
+
+# For creation and piping JSON output to a file
+docker run --rm --mount type=bind,source="{PATH}",target=/usr/app/cli/ angadsharma1016/gitcr -c "bash /usr/app/cli/gitcr create --out=json"
+
+# For deletion/reverting and piping JSON output to a file
+docker run --rm --mount type=bind,source="{PATH}",target=/usr/app/cli/ angadsharma1016/gitcr -c "bash /usr/app/cli/gitcr revert --out=json"
+```
+
+To run the scripts natively (in linux based systems): 
 
 ```bash
 # To create bulk repositories
@@ -64,6 +80,50 @@ $ ./gitcr revert --out=json
 
 <br>
 
+### Output files
+If you have used a `--out=json` flag then a file will be created in the *output/* directory. See the samples for [creation](./output/sample.created_out.json) and [deletion](sample.deleted_out.json) , or see one below:
+
+```json
+[
+  {
+    "repo_name": "generated-01",
+    "status": "SUCCESS",
+    "order_of_execution": 0,
+    "code": 201,
+    "url": "https://github.com/L04DB4L4NC3R/generated-01"
+  },
+  {
+    "repo_name": "generated-02",
+    "status": "SUCCESS",
+    "order_of_execution": 1,
+    "code": 201,
+    "url": "https://github.com/L04DB4L4NC3R/generated-02"
+  }
+]
+```
+
+And for deletion:
+
+```bash
+[
+  {
+    "repo_name": "generated-01",
+    "status": "FAILURE",
+    "order_of_execution": 0,
+    "code": 404
+  },
+  {
+    "repo_name": "generated-02",
+    "status": "FAILURE",
+    "order_of_execution": 1,
+    "code": 404
+  }
+]
+
+```
+
+<br>
+<br>
 <p align="center">
 	Made with :heart: by <a href="https://github.com/L04DB4L4NC3R">L04DB4L4NC3R</a>
 </p>
