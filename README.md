@@ -36,11 +36,6 @@ repo-5000
 ```
 See a sample [here](./repos.txt)
 
-3. Lastly, to get started run the following commands:
-```bash
-$ chmod +x gitcr
-$ ./gitcr
-```
 
 ### Execution
 To run the scripts on any platform, replace `{PATH}`  with the absolute file path of where your script exists, then run the command(s) below:
@@ -61,6 +56,12 @@ docker run --rm --mount type=bind,source="{PATH}",target=/usr/app/cli/ angadshar
 To run the scripts natively (in linux based systems): 
 
 ```bash
+# one time execution needed for the 2 commands below
+$ chmod +x gitcr
+$ ./gitcr
+
+# Once done, the following commands can be executed:
+
 # To create bulk repositories
 $ ./gitcr create
 
