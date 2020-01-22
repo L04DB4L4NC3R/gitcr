@@ -1,3 +1,4 @@
+# Make env variables out of .env
 . ./.env
 
 template_name=$GITHUB_TEMPLATE_NAME

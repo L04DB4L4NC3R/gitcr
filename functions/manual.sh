@@ -1,8 +1,9 @@
 helpFunc(){
+
 	echo "Usage: "
-	echo "./gitcr.sh create"
-	echo "./gitcr.sh create --out=json"
-	echo "./gitcr.sh revert"
-	echo "./gitcr.sh revert --out=json"
+	echo "./gitcr create"
+	echo "./gitcr create --out=json"
+	echo "./gitcr revert"
+	echo "./gitcr revert --out=json"
 
 }
