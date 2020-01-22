@@ -66,4 +66,27 @@ create(){
 
 }
 
-create $@
+helpFunc(){
+	echo "Usage: "
+	echo "./create.sh create"
+	echo "./create.sh create --out=json"
+
+}
+
+cli(){
+	case $1 in 
+		create)
+			create $@
+			;;
+		help)
+			helpFunc
+			;;
+
+		*)
+		helpFunc
+ 		;;
+	esac
+}
+
+
+cli $@
