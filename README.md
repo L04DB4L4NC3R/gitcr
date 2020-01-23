@@ -7,7 +7,7 @@
 
 ---
 
-Check out the blog related to this project: [7 things I learnt from a script for repository creation](https://dev.to/l04db4l4nc3r/7-things-i-learnt-from-a-script-for-repository-creation-4cbk).
+Check out the blog related to this project: [7 things I learnt from a script for repository creation](https://kutt.it/gitcr).
 
 ## Functionalities
 - [X] Bulk create repositories from a template
