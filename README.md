@@ -15,7 +15,7 @@
 ## Instructions to run
 
 ### Pre-requisites
-* A linux based system with *curl* and *jq* installed, or docker
+* Docker, or a linux based system with *curl* and *jq* installed.
 * [Github personal access token](https://github.com/settings/tokens) with write and delete permissions. 
 * A [template repository](https://help.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-repository-from-a-template).
 
@@ -56,7 +56,7 @@ docker run --rm --mount type=bind,source="{PATH}",target=/usr/app/cli/ angadshar
 To run the scripts natively (in linux based systems): 
 
 ```bash
-# one time execution needed for the 2 commands below
+# One time execution needed for the 2 commands below
 $ chmod +x gitcr
 $ ./gitcr
 
