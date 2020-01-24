@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# Unofficial strict mode for bash
+# See http://redsymbol.net/articles/unofficial-bash-strict-mode/
+set -euo pipefail
+IFS=$'\n\t'
 
 # Importing functions
 . ./functions/config.sh
